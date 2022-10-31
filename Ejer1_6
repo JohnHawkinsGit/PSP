@@ -15,18 +15,20 @@ public class Ejer1_6 {
 		BufferedReader br= new BufferedReader(in);
 		int numeros[]=new int[2];
 		boolean ok=true;
-		for(int i=0; i<numeros.length; i++) {
+		//for(int i=0; i<numeros.length; i++) {
+		
 			do {
 				ok=true;
 				try {
 					System.out.println("Introduce un numero");
-					numeros[i]=Integer.parseInt(br.readLine());
+					numeros[0]=Integer.parseInt(br.readLine());
+					numeros[1]=Integer.parseInt(br.readLine());
 				}catch(Exception e){
 					System.out.println("NO ES UN NÚMERO");
 					ok=false;
 				}
 			}while(!ok);
-		}
+		//}
 		in.close();
 		System.out.println("La suma de "+numeros[0]+" y "+numeros[1]+" es "+(numeros[0]+numeros[1]));
 	}
