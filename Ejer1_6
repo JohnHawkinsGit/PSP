@@ -15,7 +15,6 @@ public class Ejer1_6 {
 		BufferedReader br= new BufferedReader(in);
 		int numeros[]=new int[2];
 		boolean ok=true;
-		//for(int i=0; i<numeros.length; i++) {
 		
 			do {
 				ok=true;
@@ -28,7 +27,6 @@ public class Ejer1_6 {
 					ok=false;
 				}
 			}while(!ok);
-		//}
 		in.close();
 		System.out.println("La suma de "+numeros[0]+" y "+numeros[1]+" es "+(numeros[0]+numeros[1]));
 	}
