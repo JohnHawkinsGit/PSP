@@ -1,0 +1,46 @@
+package psp_argumentos;
+
+import java.io.*;
+
+public class Repaso9 {
+
+	public static void main(String[] args) throws IOException {
+		/*
+		Modifica el Repaso7 para que al ejecutar el programa la entrada al proceso se obtenga
+		de un fichero 
+		*/
+		File directorio=new File(".\\bin");
+		ProcessBuilder pb=new ProcessBuilder("java","psp_argumentos.Repaso7");
+		pb.directory(directorio);
+		//Se ejecuta el proceso
+		Process p=pb.start();
+		String texto = "";
+		try {
+			FileReader fr= new FileReader("cadena.txt");
+			BufferedReader bf=new BufferedReader(fr);
+			OutputStream os=p.getOutputStream();
+			while((texto=bf.readLine())!=null) {
+				os.write((texto+"\n").getBytes());
+			}
+			
+		} catch (IOException e) {
+			System.out.println("Fichero no existe o ruta fichero incorrecta " + e);
+		}
+
+		InputStream is = p.getInputStream();		
+		 int c;
+		 while ((c = is.read()) != -1)
+			System.out.print((char) c);
+		 is.close();
+		
+		// COMPROBACION DE ERROR - 0 bien - 1 mal
+		int exitVal;
+		try {
+			exitVal = p.waitFor();
+			System.out.println("Valor de Salida: " + exitVal);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
