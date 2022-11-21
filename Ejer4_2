@@ -1,3 +1,5 @@
+package senalesPSP_1;
+
 import java.io.*;
 
 public class Ejer4_2 {
@@ -9,7 +11,7 @@ public class Ejer4_2 {
 		 al ejecutar el programa anterior.
 		  */
 		File directorio=new File(".\\bin");
-		ProcessBuilder pb = new ProcessBuilder("JAVA","psp_argumentos.Ejer4");
+		ProcessBuilder pb = new ProcessBuilder("JAVA","senalesPSP_1.Ejer4","2","cadena");
 		pb.directory(directorio);
 		Process p=pb.start();
 		
@@ -19,7 +21,13 @@ public class Ejer4_2 {
 		 c = is.read();
 		 is.close();
 		
-		switch(c) {
+		
+		// COMPROBACION DE ERROR - 0 bien - 1 mal
+		int exitVal;
+		try {
+			exitVal = p.waitFor();
+			System.out.println("Valor de Salida: " + exitVal);
+			switch(exitVal) {
 			case 0:
 				System.out.println("Se ha introducido mas de un argumento");
 				break;
@@ -33,13 +41,6 @@ public class Ejer4_2 {
 				System.out.println("No se ha introducido nada de lo anterior");
 				break;
 		}
-		// COMPROBACION DE ERROR - 0 bien - 1 mal
-		int exitVal;
-		try {
-			exitVal = p.waitFor();
-			System.out.println("Valor de Salida: " + exitVal);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-	}
