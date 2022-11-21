@@ -16,7 +16,7 @@ public class Ejer4 {
 		 A continuación. crea una carpeta en el disco duro y almacena los dos programas.
 		 Realiza los cambios necesarios para compilarlos y ejecutarlos desde el cmd.
 		 */
-		if(args.length<1) {
+		if(args.length==1) {
 			System.out.println("1");
 			System.exit(1);
 		}
