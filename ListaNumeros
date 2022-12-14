@@ -1,0 +1,26 @@
+package primos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListaNumeros {
+	public interface Profesional {
+        void update(int event);
+    }
+  
+    private final List<Profesional> profesionales = new ArrayList<>();
+  
+    private void notifyObservers(int event) {
+    	profesionales.forEach(numero -> numero.update(event));
+    }
+  
+    public void addObserver(Profesional observer) {
+    	profesionales.add(observer);
+    }
+  
+    public void generarPrimos() {
+        for(int i=1000;i<=2000;i++){
+            notifyObservers(i);
+        }
+    }
+}
