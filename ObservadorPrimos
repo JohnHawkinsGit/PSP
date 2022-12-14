@@ -1,0 +1,26 @@
+package primos;
+
+public class ObservadorPrimos {
+	public static void main(String[] args) {
+        ListaNumeros lista= new ListaNumeros ();
+        lista.addObserver(new ListaNumeros.Profesional() {
+			@Override
+			public void update(int event) {
+				if(esPrimo(event)) {
+					System.out.println(event+" Es primo");
+				}
+			}
+		});
+        lista.generarPrimos();
+    }
+	public static boolean esPrimo(int event){
+		int contador = 2;
+		boolean primo=true;
+		while ((primo) && (contador!=event)){
+			if (event % contador == 0) 
+		    primo = false;
+		    contador++;
+		  }
+		  return primo;
+	}
+}
